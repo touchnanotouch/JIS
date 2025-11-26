@@ -1,0 +1,33 @@
+[project]
+name = "JIS"
+version = "0.1.0"
+description = "JIS - Job Search Automation"
+
+dependencies = [
+    "fastapi>=0.121.0",
+    "sqlalchemy>=2.0.0",
+    "redis>=7.1.0",
+    "pydantic>=2.12.0",
+    "httpx>=0.28.0",
+    "uvicorn",
+    "numpy",
+    "pandas"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=9.0.1",
+    "black",
+    "isort",
+    "mypy",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.mypy]
+python_version = "3.13.2"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
