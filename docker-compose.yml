@@ -1,0 +1,90 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: jis-web:latest
+    container_name: jis-web
+    ports:
+      - "${PORT}:${PORT}"
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./logs:/app/logs
+    command: sh -c "python -m src.jis.main"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${PORT}/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - jis-network
+
+  db:
+    image: postgres:17
+    container_name: jis-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    env_file:
+      - .env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - jis-network
+
+  redis:
+    image: redis:7-alpine
+    container_name: jis-redis
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - jis-network
+  
+  # celery:
+  #   build:
+  #     context: .
+  #     dockerfile: docker/Dockerfile
+  #   container_name: jis-celery
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     db:
+  #       condition: service_healthy
+  #     redis:
+  #       condition: service_healthy
+  #   volumes:
+  #     - ./src:/app/src
+  #     - ./logs:/app/logs
+  #   command: >
+  #     sh -c "celery -A src.jis.celery_app.celery_app worker --loglevel=${LOG_LEVEL} -Q scraping,applications,background"
+  #   networks:
+  #     - jis-network
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  jis-network:
+    driver: bridge

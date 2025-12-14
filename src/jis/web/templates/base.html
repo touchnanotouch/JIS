@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
+
+    <title>{% block title %}JIS{% endblock %}</title>
+
+    <!-- Main CSS Loader -->
+
+    <link rel="stylesheet" href="/static/css/loader.css">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+    <!-- App Container -->
+
+    <div class="app-container">
+        <!-- Sidebar -->
+
+        <aside class="sidebar">
+            {% include "components/sidebar.html" %}
+        </aside>
+
+        <!-- Main Content -->
+        
+        <main class="main">
+            <!-- Header Block -->
+
+            <header class="header">
+                {% include "components/header.html" %}
+            </header>
+
+            <!-- Page Block -->
+
+            <div class="page-wrapper">
+                <!-- Page Header -->
+
+                <div class="page-header">
+                    <h1 class="page-title">{% block page_title %}{% endblock %}</h1>
+
+                </div>
+
+                <!-- Page Content -->
+
+                <div class="page-content">{% block page_content %}{% endblock %}</div>
+            </div>
+
+            <!-- Footer Block -->
+        </main>
+    </div>
+</body>
+</html>
