@@ -1,285 +1,106 @@
 /* base/_vars.css */
-/* ============================================
-   JIS (Job Intelligence System) Design Tokens
-   Агрегатор вакансий - профессиональная палитра
-=============================================== */
+
 
 :root {
-    /* ============== БРЕНД & АКЦЕНТЫ ============== */
-    /* Основной брендовый цвет - уверенный синий */
-    --brand-primary: #2563eb;           /* Professional Blue */
-    --brand-primary-hover: #1d4ed8;
-    --brand-primary-light: #eff6ff;
-    --brand-primary-dark: #1e40af;
-    --brand-primary-rgb: 37, 99, 235;
-    
-    /* Акцент для действий - мотивирующий зеленый */
-    --brand-accent: #059669;            /* Career Green */
-    --brand-accent-hover: #047857;
-    --brand-accent-light: #f0fdf4;
-    --brand-accent-dark: #065f46;
-    --brand-accent-rgb: 5, 150, 105;
-    
-    /* Цвет призыва к действию (Apply, Submit) */
-    --brand-action: #dc2626;            /* Action Red */
-    --brand-action-hover: #b91c1c;
-    --brand-action-light: #fef2f2;
-    --brand-action-dark: #991b1b;
-    
-    /* ============== СТАТУСНЫЕ ЦВЕТА ============== */
-    /* Статусы вакансий и откликов */
-    --status-new: #3b82f6;              /* New - синий */
-    --status-viewed: #8b5cf6;           /* Viewed - фиолетовый */
-    --status-invited: #10b981;          /* Invited - зеленый */
-    --status-rejected: #ef4444;         /* Rejected - красный */
-    --status-archived: #6b7280;         /* Archived - серый */
-    
-    /* Статусы парсинга */
-    --status-parsing: #f59e0b;          /* Parsing - янтарный */
-    --status-success: #10b981;          /* Success - зеленый */
-    --status-failed: #ef4444;           /* Failed - красный */
-    --status-pending: #8b5cf6;          /* Pending - фиолетовый */
-    
-    /* ============== ТИПЫ ВАКАНСИЙ ============== */
-    --job-type-full: #059669;           /* Full-time */
-    --job-type-part: #3b82f6;           /* Part-time */
-    --job-type-remote: #8b5cf6;         /* Remote */
-    --job-type-hybrid: #f59e0b;         /* Hybrid */
-    --job-type-contract: #ef4444;       /* Contract */
-    --job-type-internship: #06b6d4;     /* Internship */
-    
-    /* ============== УРОВНИ ОПЫТА ============== */
-    --exp-junior: #22c55e;              /* Junior */
-    --exp-middle: #3b82f6;              /* Middle */
-    --exp-senior: #8b5cf6;              /* Senior */
-    --exp-lead: #ec4899;                /* Lead */
-    --exp-intern: #06b6d4;              /* Intern */
-    
-    /* ============== ПЛАТФОРМЫ ПАРСИНГА ============== */
-    --platform-hh: #ff6b00;             /* HeadHunter */
-    --platform-superjob: #00a2ff;       /* SuperJob */
-    --platform-habr: #77b900;           /* Habr Career */
-    --platform-linkedin: #0a66c2;       /* LinkedIn */
-    --platform-glassdoor: #0caa41;      /* Glassdoor */
-    
-    /* ============== СИСТЕМНЫЕ ЦВЕТА ============== */
-    --system-success: #10b981;
-    --system-warning: #f59e0b;
-    --system-error: #ef4444;
-    --system-info: #3b82f6;
-    
-    /* ============== НЕЙТРАЛЬНАЯ ПАЛИТРА ============== */
-    --neutral-0: #ffffff;
-    --neutral-50: #f9fafb;
-    --neutral-100: #f3f4f6;
-    --neutral-200: #e5e7eb;
-    --neutral-300: #d1d5db;
-    --neutral-400: #9ca3af;
-    --neutral-500: #6b7280;
-    --neutral-600: #4b5563;
-    --neutral-700: #374151;
-    --neutral-800: #1f2937;
-    --neutral-900: #111827;
-    --neutral-950: #030712;
-    
-    /* ============== ФОНЫ ============== */
-    --bg-body: var(--neutral-50);
-    --bg-surface: var(--neutral-0);
-    --bg-surface-elevated: var(--neutral-0);
-    --bg-surface-subtle: var(--neutral-50);
-    --bg-toolbar: var(--neutral-100);
-    --bg-sidebar: var(--neutral-50);
-    --bg-overlay: rgba(0, 0, 0, 0.5);
-    --bg-backdrop: rgba(0, 0, 0, 0.1);
-    --bg-hover: rgba(37, 99, 235, 0.05);
-    --bg-active: rgba(37, 99, 235, 0.1);
-    
-    /* ============== ТЕКСТ ============== */
-    --text-primary: var(--neutral-900);
-    --text-secondary: var(--neutral-700);
-    --text-tertiary: var(--neutral-600);
-    --text-muted: var(--neutral-500);
-    --text-disabled: var(--neutral-400);
-    --text-on-brand: var(--neutral-0);
-    --text-on-dark: var(--neutral-0);
-    --text-link: var(--brand-primary);
-    --text-link-hover: var(--brand-primary-hover);
-    
-    /* ============== ГРАНИЦЫ ============== */
-    --border-light: var(--neutral-200);
-    --border-base: var(--neutral-300);
-    --border-strong: var(--neutral-400);
-    --border-focus: var(--brand-primary);
-    --border-error: var(--system-error);
-    --border-success: var(--system-success);
-    
-    /* ============== ТЕНИ ============== */
-    --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    
-    /* Компонентные тени */
-    --shadow-card: var(--shadow-sm);
-    --shadow-dropdown: var(--shadow-lg);
-    --shadow-modal: var(--shadow-2xl);
-    --shadow-tooltip: 0 4px 12px rgb(0 0 0 / 0.15);
-    
-    /* ============== ФОКУС ============== */
-    --focus-ring: 0 0 0 3px rgba(37, 99, 235, 0.15);
-    --focus-ring-error: 0 0 0 3px rgba(239, 68, 68, 0.15);
-    --focus-ring-success: 0 0 0 3px rgba(16, 185, 129, 0.15);
-    
-    /* ============== ТИПОГРАФИКА ============== */
-    /* Шрифты - современные, читаемые */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    --font-mono: 'JetBrains Mono', 'SF Mono', 'Roboto Mono', monospace;
-    --font-display: 'Inter', sans-serif;
-    
-    /* Размеры шрифтов - более детализированные */
-    --text-xs: 0.75rem;      /* 12px */
-    --text-sm: 0.875rem;     /* 14px */
-    --text-base: 0.9375rem;  /* 15px - основной размер для данных */
-    --text-md: 1rem;         /* 16px */
-    --text-lg: 1.125rem;     /* 18px */
-    --text-xl: 1.25rem;      /* 20px */
-    --text-2xl: 1.5rem;      /* 24px */
-    --text-3xl: 1.875rem;    /* 30px */
-    --text-4xl: 2.25rem;     /* 36px */
-    --text-5xl: 3rem;        /* 48px */
-    
-    /* Межстрочный интервал */
-    --leading-tight: 1.25;
-    --leading-snug: 1.375;
-    --leading-normal: 1.5;
-    --leading-relaxed: 1.625;
-    
-    /* Межбуквенные интервалы (letter-spacing) */
-    --tracking-tighter: -0.05em;
-    --tracking-tight: -0.025em;
-    --tracking-normal: 0em;
-    --tracking-wide: 0.025em;
-    --tracking-wider: 0.05em;
-    --tracking-widest: 0.1em;
+    /* Base Units */
 
-    /* Для заголовков и специальных случаев */
-    --tracking-headline: -0.015em;
-    --tracking-title: -0.01em;
-    --tracking-subhead: 0em;
-    --tracking-caps: 0.1em;          /* Для текста в uppercase */
-    --tracking-micro: 0.05em;         /* Для очень мелкого текста */
+    --base-unit: 1rem; /* 16px */
+    --spacing-scale: 0.25rem; /* 4px */
 
-    /* Специально для сайдбара */
-    --tracking-sidebar-title: 0.05em; /* Для заголовков групп в сайдбаре */
-    --tracking-sidebar-text: -0.01em; /* Для пунктов меню */
+    /* Typography */
 
-    /* ============== ПРОБЕЛЫ ============== */
+    --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'SF Mono', Monaco, 'Cascadia Mono', monospace;
+
+    /* Logo Colors */
+
+    --color-red: #dc2626;
+    --color-blue: #2563eb;
+    --color-green: #10b981;
+    --color-purple: #8b5cf6;
+    
+    /* Neutral Colors */
+
+    --color-gray-50: #f8fafc;
+    --color-gray-100: #f1f5f9;
+    --color-gray-200: #e2e8f0;
+    --color-gray-300: #cbd5e1;
+    --color-gray-400: #94a3b8;
+    --color-gray-500: #64748b;
+    --color-gray-600: #475569;
+    --color-gray-700: #334155;
+    --color-gray-800: #1e293b;
+    --color-gray-900: #0f172a;
+    
+    /* Background Colors */
+
+    --bg-body: var(--color-gray-50);
+    --bg-surface: #ffffff;
+    --bg-sidebar: var(--color-gray-900);
+
+    /* System Colors */
+
+    --brand-primary: var(--color-blue);
+    --brand-accent: var(--color-green);
+    --brand-danger: var(--color-red);
+    --brand-special: var(--color-purple);
+    
+    /* Text Colors */
+
+    --text-primary: var(--color-gray-900);
+    --text-secondary: var(--color-gray-700);
+    --text-muted: var(--color-gray-500);
+    --text-on-dark: var(--color-gray-100);
+    --text-on-light: var(--color-gray-900);
+    
+    /* Border Colors */
+
+    --border-light: var(--color-gray-200);
+    --border-base: var(--color-gray-300);
+    --border-dark: var(--color-gray-700);
+    
+    /* Sidebar Sizes */
+
+    --sidebar-width: 16rem; /* 256px */
+    --sidebar-width-collapsed: 4rem; /* 64px */
+
+    /* Text Sizes */
+
+    --text-xs: 0.75rem;   /* 12px */
+    --text-sm: 0.875rem;  /* 14px */
+    --text-base: 1rem;    /* 16px */
+    --text-lg: 1.125rem;  /* 18px */
+    --text-xl: 1.25rem;   /* 20px */
+    
+    /* Spacing Sizes */
+
     --space-0: 0;
-    --space-px: 1px;
-    --space-0-5: 0.125rem;   /* 2px */
-    --space-1: 0.25rem;      /* 4px */
-    --space-1-5: 0.375rem;   /* 6px */
-    --space-2: 0.5rem;       /* 8px */
-    --space-2-5: 0.625rem;   /* 10px */
-    --space-3: 0.75rem;      /* 12px */
-    --space-3-5: 0.875rem;   /* 14px */
-    --space-4: 1rem;         /* 16px */
-    --space-5: 1.25rem;      /* 20px */
-    --space-6: 1.5rem;       /* 24px */
-    --space-7: 1.75rem;      /* 28px */
-    --space-8: 2rem;         /* 32px */
-    --space-9: 2.25rem;      /* 36px */
-    --space-10: 2.5rem;      /* 40px */
-    --space-11: 2.75rem;     /* 44px */
-    --space-12: 3rem;        /* 48px */
-    --space-14: 3.5rem;      /* 56px */
-    --space-16: 4rem;        /* 64px */
-    --space-20: 5rem;        /* 80px */
-    --space-24: 6rem;        /* 96px */
+    --space-1: 0.25rem;   /* 4px */
+    --space-2: 0.5rem;    /* 8px */
+    --space-3: 0.75rem;   /* 12px */
+    --space-4: 1rem;      /* 16px */
+    --space-5: 1.25rem;   /* 20px */
+    --space-6: 1.5rem;    /* 24px */
+    --space-8: 2rem;      /* 32px */
+    --space-10: 2.5rem;   /* 40px */
+    --space-12: 3rem;     /* 48px */
     
-    /* ============== РАДИУСЫ ============== */
-    --radius-none: 0;
-    --radius-xs: 0.125rem;   /* 2px */
-    --radius-sm: 0.25rem;    /* 4px */
-    --radius-md: 0.375rem;   /* 6px */
-    --radius-lg: 0.5rem;     /* 8px */
-    --radius-xl: 0.75rem;    /* 12px */
-    --radius-2xl: 1rem;      /* 16px */
-    --radius-3xl: 1.5rem;    /* 24px */
+    /* Radius Sizes */
+
+    --radius-sm: 0.25rem;  /* 4px */
+    --radius-md: 0.375rem; /* 6px */
+    --radius-lg: 0.5rem;   /* 8px */
+    --radius-xl: 0.75rem;  /* 12px */
     --radius-full: 9999px;
     
-    /* ============== АНИМАЦИИ ============== */
-    --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    /* ============== Z-ИНДЕКСЫ ============== */
-    --z-auto: auto;
-    --z-0: 0;
-    --z-10: 10;
-    --z-20: 20;
-    --z-30: 30;
-    --z-40: 40;
-    --z-50: 50;
-    --z-dropdown: 1000;
-    --z-sticky: 1020;
-    --z-fixed: 1030;
-    --z-modal-backdrop: 1040;
-    --z-modal: 1050;
-    --z-popover: 1060;
-    --z-tooltip: 1070;
-    --z-toast: 1080;
-    
-    /* ============== СПЕЦИФИЧНЫЕ ДЛЯ HR ============== */
-    /* Приоритет вакансий */
-    --priority-high: #ef4444;     /* High priority */
-    --priority-medium: #f59e0b;   /* Medium priority */
-    --priority-low: #3b82f6;      /* Low priority */
-    
-    /* Зарплатные диапазоны */
-    --salary-low: #22c55e;        /* Low range */
-    --salary-mid: #3b82f6;        /* Mid range */
-    --salary-high: #8b5cf6;       /* High range */
-    
-    /* Технологические стеки (примеры) */
-    --tech-python: #3776ab;
-    --tech-js: #f7df1e;
-    --tech-react: #61dafb;
-    --tech-go: #00add8;
-    --tech-java: #007396;
-    --tech-cpp: #00599c;
-    
-    /* ============== ГРАДИЕНТЫ ============== */
-    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-    --gradient-accent: linear-gradient(135deg, #059669 0%, #047857 100%);
-    --gradient-subtle: linear-gradient(135deg, var(--neutral-50) 0%, var(--neutral-100) 100%);
-    
-    /* ============== СПЕЦИАЛЬНЫЕ ПЕРЕМЕННЫЕ ============== */
-    /* Максимальные ширины */
-    --max-width-xs: 20rem;     /* 320px */
-    --max-width-sm: 24rem;     /* 384px */
-    --max-width-md: 28rem;     /* 448px */
-    --max-width-lg: 32rem;     /* 512px */
-    --max-width-xl: 36rem;     /* 576px */
-    --max-width-2xl: 42rem;    /* 672px */
-    --max-width-3xl: 48rem;    /* 768px */
-    --max-width-4xl: 56rem;    /* 896px */
-    --max-width-5xl: 64rem;    /* 1024px */
-    --max-width-6xl: 72rem;    /* 1152px */
-    --max-width-7xl: 80rem;    /* 1280px */
-    
-    /* Высоты */
-    --header-height: 4rem;     /* 64px */
-    --sidebar-width: 16rem;    /* 256px */
-    --sidebar-width-collapsed: 4rem; /* 64px */
-    
-    /* Брейкпоинты (в em для accessibility) */
-    --breakpoint-sm: 40em;     /* 640px */
-    --breakpoint-md: 48em;     /* 768px */
-    --breakpoint-lg: 64em;     /* 1024px */
-    --breakpoint-xl: 80em;     /* 1280px */
-    --breakpoint-2xl: 96em;    /* 1536px */
+    /* Z-Indicies */
+
+    --z-fixed: 100;
+    --z-modal: 200;
+
+    /* Transition Durations */
+
+    --transition-fast: 150ms;
+    --transition-normal: 250ms;
+    --transition-slow: 350ms;
 }

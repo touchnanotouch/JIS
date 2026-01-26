@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="/static/css/loader.css">
 
-    <!-- Font Awesome -->
+    <!-- Font Awesome (for icons) -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
@@ -31,9 +31,9 @@
         <main class="main">
             <!-- Header Block -->
 
-            <header class="header">
+            <!-- <header class="header">
                 {% include "components/header.html" %}
-            </header>
+            </header> -->
 
             <!-- Page Block -->
 
@@ -51,7 +51,47 @@
             </div>
 
             <!-- Footer Block -->
+
+            <!-- <footer>
+                {% include "components/footer.html" %}
+            </footer> -->
         </main>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+            const toggleIcon = document.querySelector('.toggle-icon');
+            
+
+            const isCollapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+            if (isCollapsed) {
+                sidebar.classList.add('collapsed');
+                updateToggleIcon(true);
+            }
+            
+
+            sidebarToggle.addEventListener('click', function() {
+                const isNowCollapsed = sidebar.classList.toggle('collapsed');
+                
+                localStorage.setItem('sidebar-collapsed', isNowCollapsed);
+                
+
+                updateToggleIcon(isNowCollapsed);
+            });
+            
+            function updateToggleIcon(isCollapsed) {
+                if (toggleIcon) {
+                    if (isCollapsed) {
+                        toggleIcon.classList.remove('fa-arrow-left');
+                        toggleIcon.classList.add('fa-arrow-right');
+                    } else {
+                        toggleIcon.classList.remove('fa-arrow-right');
+                        toggleIcon.classList.add('fa-arrow-left');
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

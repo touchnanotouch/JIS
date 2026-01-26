@@ -1,6 +1,7 @@
-<!-- Логотип -->
+<!-- Header -->
+
 <header class="sidebar-header">
-    <div class="sidebar-header-div">
+    <div class="sidebar-header-wrapper">
         <a href="{{ url_for('dashboard') }}" class="logo-link">
             <div class="logo-badge">
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -16,46 +17,153 @@
             </div>
             <div class="logo-text">
                 <span class="logo-name">JIS</span>
-                <!-- <span class="logo-tagline">Job Hub</span> -->
             </div>
         </a>
 
-        <button class="sidebar-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M14 18L8 12L14 6" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
+        <!-- TODO: Изменить title при сворачивании -->
+        <button class="sidebar-toggle" title="Свернуть боковую панель">
+            <i class="fas fa-arrow-left toggle-icon"></i>
         </button>
     </div>
 </header>
 
-<!-- Навигация -->
+<!-- Nav -->
+
 <nav class="sidebar-nav">
     <ul class="nav-menu">
-        <!-- Главная -->
-        <li class="nav-item {% if request.url.path == '/' or request.url.path == '/dashboard' %}active{% endif %}">
-            <a href="{{ url_for('dashboard') }}" class="nav-link">
-                <span class="nav-text">Панель</span>
+        <!-- Main Panel -->
+
+        <li class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
+            <a href="{{ url_for('dashboard') }}" class="nav-link" title="Главная панель">
+                <i class="fas fa-home nav-icon"></i>
+                <span class="nav-text">Главная панель</span>
+            </a>
+        </li>
+        
+        <!-- Vacancies -->
+
+        <li class="nav-group-divider">
+            <span class="nav-group-title">Вакансии</span>
+        </li>
+        
+        <li class="nav-item {% if request.endpoint == 'favorites' %}active{% endif %}">
+            <a href="{{ url_for('favorites') }}" class="nav-link" title="Избранное">
+                <i class="fas fa-star nav-icon"></i>
+                <span class="nav-text">Избранное</span>
+            </a>
+        </li>
+
+        <li class="nav-item {% if request.endpoint == 'job_search' %}active{% endif %}">
+            <a href="{{ url_for('search') }}" class="nav-link" title="Поиск">
+                <i class="fas fa-search nav-icon"></i>
+                <span class="nav-text">Поиск</span>
+            </a>
+        </li>
+        
+        <!-- Responses -->
+
+        <li class="nav-group-divider">
+            <span class="nav-group-title">Отклики</span>
+        </li>
+        
+        <li class="nav-item {% if request.endpoint == 'responses' %}active{% endif %}">
+            <a href="{{ url_for('responses') }}" class="nav-link" title="История откликов">
+                <i class="fas fa-paper-plane nav-icon"></i>
+                <span class="nav-text">История откликов</span>
+            </a>
+        </li>
+
+        <li class="nav-item {% if request.endpoint == 'templates' %}active{% endif %}">
+            <a href="{{ url_for('templates') }}" class="nav-link">
+                <i class="fas fa-file-alt nav-icon" title="Шаблоны откликов"></i>
+                <span class="nav-text">Шаблоны откликов</span>
+            </a>
+        </li>
+
+        <!-- Responses (auto) -->
+
+        <li class="nav-item {% if request.endpoint == 'auto_responses' %}active{% endif %}">
+            <a href="{{ url_for('auto_responses') }}" class="nav-link" title="Авто-отклики">
+                <i class="fas fa-robot nav-icon"></i>
+                <span class="nav-text">Авто-отклики</span>
+            </a>
+        </li>
+        
+        <!-- Analytics -->
+
+        <li class="nav-group-divider">
+            <span class="nav-group-title">Аналитика</span>
+        </li>
+        
+        <li class="nav-item {% if request.endpoint == 'statistics' %}active{% endif %}">
+            <a href="{{ url_for('statistics') }}" class="nav-link" title="Статистика">
+                <i class="fas fa-bar-chart nav-icon"></i>
+                <span class="nav-text">Статистика</span>
+            </a>
+        </li>
+
+        <!-- System -->
+
+        <li class="nav-group-divider">
+            <span class="nav-group-title">Система</span>
+        </li>
+        
+        <li class="nav-item {% if request.endpoint == 'sources' %}active{% endif %}">
+            <a href="{{ url_for('sources') }}" class="nav-link" title="Источники">
+                <i class="fas fa-database nav-icon"></i>
+                <span class="nav-text">Источники</span>
+            </a>
+        </li>
+        
+        <li class="nav-item {% if request.endpoint == 'parser' %}active{% endif %}">
+            <a href="{{ url_for('parser') }}" class="nav-link" title="Парсер">
+                <i class="fas fa-code nav-icon"></i>
+                <span class="nav-text">Парсер</span>
+            </a>
+        </li>
+        
+        <li class="nav-item {% if request.endpoint == 'notifications' %}active{% endif %}">
+            <a href="{{ url_for('notifications') }}" class="nav-link" title="Уведомления">
+                <i class="fas fa-bell nav-icon"></i>
+                <span class="nav-text">Уведомления</span>
             </a>
         </li>
     </ul>
 </nav>
 
-<!-- Профиль пользователя -->
-<footer class="sidebar-footer">
-    <div class="profile-info">
-        <div class="profile-avatar">
-            {{ current_user.email[0].upper() if current_user else '?' }}
-        </div>
-        <div class="profile-details">
-            <span class="profile-name">
-                {{ current_user.full_name if current_user else 'Гость' }}
-            </span>
-            <span class="profile-email">
-                {{ current_user.email if current_user else 'Войдите в аккаунт' }}
-            </span>
-        </div>
-    </div>
-    <div class="profile-actions">
+<!-- Footer -->
 
+<footer class="sidebar-footer">
+    <div class="sidebar-footer-wrapper">
+        <div class="profile-info">
+            <div class="profile-avatar">
+                <i class="fas fa-question"></i>
+            </div>
+            <div class="profile-details">
+                <span class="profile-name">
+                    {{ current_user.full_name if current_user else 'Гость' }}
+                </span>
+                <span class="profile-email">
+                    {{ current_user.email if current_user else 'Войдите в аккаунт' }}
+                </span>
+            </div>
+        </div>
+        
+        <div class="profile-actions">
+            <!-- Account -->
+            
+            <a href="{{ url_for('settings') }}" class="profile-action" title="Настройки">
+                <i class="fas fa-cog"></i>
+            </a>
+            {% if current_user %}
+            <a href="{{ url_for('logout') }}" class="profile-action" title="Выйти">
+                <i class="fas fa-sign-out"></i>
+            </a>
+            {% else %}
+            <a href="{{ url_for('login') }}" class="profile-action" title="Войти">
+                <i class="fas fa-sign-in"></i>
+            </a>
+            {% endif %}
+        </div>
     </div>
 </footer>

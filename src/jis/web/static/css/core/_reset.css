@@ -1,0 +1,48 @@
+/* base/_reset.css */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+}
+
+.app-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-container:has(.sidebar:not(.collapsed)) {
+    padding-left: var(--sidebar-width);
+}
+
+.app-container:has(.sidebar.collapsed) {
+    padding-left: var(--sidebar-width-collapsed);
+}
+
+
+/* ::-webkit-scrollbar {
+    width: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-gray-600);
+    border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-600);
+} */
