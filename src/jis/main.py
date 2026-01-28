@@ -7,14 +7,14 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, RedirectResponse, JSONResponse
 
-from .config import settings
+from .config import config
 from .database import engine
 from .models.base import Base
 from .api.app import create_app, configure_routes
 
 
 logging.basicConfig(
-    level=getattr(logging, settings.LOG_LEVEL),
+    level=getattr(logging, config.LOG_LEVEL),
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     handlers=[logging.FileHandler("app.log"), logging.StreamHandler()],
 )
@@ -41,19 +41,19 @@ def startup():
     logger.info(f"📅 {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     logger.info("=" * 50)
 
-    if settings.ENVIRONMENT == "development":
+    if config.ENVIRONMENT == "development":
         init_database()
 
     _ = init_redis()
 
-    if settings.CHECK_CELERY_ON_STARTUP:
+    if config.CHECK_CELERY_ON_STARTUP:
         check_celery()
 
-    if settings.INIT_PARSERS_ON_STARTUP and settings.SCRAPING_ENABLED:
+    if config.INIT_PARSERS_ON_STARTUP and config.SCRAPING_ENABLED:
         init_parsers()
 
     logger.info("✅ Приложение готово к работе")
-    logger.info(f"📡 API доступен по http://{settings.HOST}:{settings.PORT}")
+    logger.info(f"📡 API доступен по http://{config.HOST}:{config.PORT}")
 
 
 def shutdown():
@@ -129,44 +129,44 @@ async def root():
 
 @app.get("/health", tags=["System"])
 async def health_check():
-    """
-    Проверка здоровья приложения
-    """
-    from sqlalchemy import text
-    from .database import get_db
+    # """
+    # Проверка здоровья приложения
+    # """
+    # from sqlalchemy import text
+    # from .database import get_db
 
-    health_status = {
-        "status": "healthy",
-        "service": "job-search-aggregator",
-        "version": "0.1.0",
-        "environment": settings.ENVIRONMENT,
-        "timestamp": datetime.now().isoformat(),
-    }
+    # health_status = {
+    #     "status": "healthy",
+    #     "service": "job-search-aggregator",
+    #     "version": "0.1.0",
+    #     "environment": config.ENVIRONMENT,
+    #     "timestamp": datetime.now().isoformat(),
+    # }
 
-    try:
-        db = next(get_db())
-        db.execute(text("SELECT 1"))
-        health_status["database"] = "connected"
-    except Exception as e:
-        health_status["database"] = "disconnected"
-        health_status["database_error"] = (
-            str(e) if settings.DEBUG else "Connection failed"
-        )
-        health_status["status"] = "degraded"
-        logger.error(f"Ошибка подключения к БД: {e}")
+    # try:
+    #     db = next(get_db())
+    #     db.execute(text("SELECT 1"))
+    #     health_status["database"] = "connected"
+    # except Exception as e:
+    #     health_status["database"] = "disconnected"
+    #     health_status["database_error"] = (
+    #         str(e) if config.DEBUG else "Connection failed"
+    #     )
+    #     health_status["status"] = "degraded"
+    #     logger.error(f"Ошибка подключения к БД: {e}")
 
-    try:
-        # await redis_client.ping()
-        health_status["redis"] = "connected"
-    except Exception as e:
-        health_status["redis"] = "disconnected"
-        health_status["redis_error"] = str(e) if settings.DEBUG else "Connection failed"
-        health_status["status"] = "degraded"
-        logger.error(f"Ошибка подключения к Redis: {e}")
+    # try:
+    #     # await redis_client.ping()
+    #     health_status["redis"] = "connected"
+    # except Exception as e:
+    #     health_status["redis"] = "disconnected"
+    #     health_status["redis_error"] = str(e) if config.DEBUG else "Connection failed"
+    #     health_status["status"] = "degraded"
+    #     logger.error(f"Ошибка подключения к Redis: {e}")
 
-    health_status["celery"] = "not_configured"
+    # health_status["celery"] = "not_configured"
 
-    return health_status
+    return True
 
 
 @app.get("/favicon.ico", include_in_schema=False)

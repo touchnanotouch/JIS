@@ -2,6 +2,22 @@
 
 {% block title %}Главная панель{% endblock %}
 
-{% block content %}
+{% block pageContent %}
+
+<div class="dashboard-wrapper">
+    <div class="dashboard-welcome card">
+        {% if current_user %}
+        <h3>Добро пожаловать, {{ current_user.full_name }}!</h3>
+        <p>У вас {{ personal.recent_favorites|length }} избранных вакансий</p>
+        {% else %}
+        <h3>Добро пожаловать в JIS!</h3>
+        <p>
+            <a href="{{ url_for('login') }}">Войдите</a> или 
+            <a href="{{ url_for('register') }}">зарегистрируйтесь</a>, 
+            чтобы сохранять вакансии и отслеживать отклики
+        </p>
+        {% endif %}
+    </div>
+</div>
 
 {% endblock %}

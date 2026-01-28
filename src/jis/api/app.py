@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from sqlalchemy.exc import SQLAlchemyError
 
-from ..config import settings
+from ..config import config
 from .exceptions import validation_exception_handler, sqlalchemy_exception_handler, global_exception_handler
 
 
@@ -12,9 +12,9 @@ def create_app() -> FastAPI:
         title="JIS",
         description="Job Search Aggregator",
         version="0.1.0",
-        docs_url="/api/docs" if settings.SHOW_DOCS else None,
-        redoc_url="/api/redoc" if settings.SHOW_DOCS else None,
-        openapi_url="/api/openapi.json" if settings.SHOW_DOCS else None,
+        docs_url="/api/docs" if config.SHOW_DOCS else None,
+        redoc_url="/api/redoc" if config.SHOW_DOCS else None,
+        openapi_url="/api/openapi.json" if config.SHOW_DOCS else None,
     )
 
     configure_middleware(app)
@@ -26,7 +26,7 @@ def create_app() -> FastAPI:
 def configure_middleware(app: FastAPI) -> None: 
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.CORS_ORIGINS,
+        allow_origins=config.CORS_ORIGINS,
         allow_credentials=False,
         allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
         allow_headers=["*"],

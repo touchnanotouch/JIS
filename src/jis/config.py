@@ -8,13 +8,14 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-class Settings(BaseSettings):
+class Config(BaseSettings):
     # Project settings
 
     PROJECT_ROOT: Path = Path(__file__).parent.parent.parent
 
     # Environment settings
 
+    VERSION: str = os.getenv("VERSION", "0.1.0")
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
     DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
 
@@ -87,4 +88,4 @@ class Settings(BaseSettings):
         case_sensitive = True
 
 
-settings = Settings()
+config = Config()

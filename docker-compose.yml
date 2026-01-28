@@ -16,7 +16,7 @@ services:
         condition: service_healthy
     volumes:
       - ./logs:/app/logs
-    command: sh -c "python -m src.jis.main"
+    command: uvicorn src.jis.main:app --host 0.0.0.0 --port ${PORT}
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:${PORT}/health"]
       interval: 30s

@@ -1,12 +1,12 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from .config import settings
+from .config import config
 
 
 engine = create_engine(
-    settings.DATABASE_URL,
-    echo=settings.DEBUG,
+    config.DATABASE_URL,
+    echo=config.DEBUG,
     pool_size=10,
     max_overflow=20,
 )

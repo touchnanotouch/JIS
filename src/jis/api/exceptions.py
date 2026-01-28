@@ -6,7 +6,7 @@ from fastapi.responses import JSONResponse, RedirectResponse
 from fastapi.exceptions import RequestValidationError
 from sqlalchemy.exc import SQLAlchemyError
 
-from ..config import settings
+from ..config import config
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ async def validation_exception_handler(
         content={
             "detail": "Ошибка валидации данных",
             "errors": errors,
-            "body": exc.body if settings.DEBUG else None,
+            "body": exc.body if config.DEBUG else None,
         },
     )
 
@@ -45,7 +45,7 @@ async def sqlalchemy_exception_handler(
     logger.error(f"Ошибка БД: {exc}", exc_info=True)
     
     # Можно добавить логику для разных типов ошибок SQLAlchemy
-    error_detail = str(exc) if settings.DEBUG else "Ошибка базы данных"
+    error_detail = str(exc) if config.DEBUG else "Ошибка базы данных"
     
     return JSONResponse(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -65,7 +65,7 @@ async def global_exception_handler(
     
     # Для API запросов возвращаем JSON
     if request.url.path.startswith("/api/"):
-        error_detail = str(exc) if settings.DEBUG else "Внутренняя ошибка сервера"
+        error_detail = str(exc) if config.DEBUG else "Внутренняя ошибка сервера"
         
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -76,7 +76,7 @@ async def global_exception_handler(
         )
     
     # Для web запросов перенаправляем на страницу ошибки
-    error_message = str(exc) if settings.DEBUG else "Произошла ошибка"
+    error_message = str(exc) if config.DEBUG else "Произошла ошибка"
     return RedirectResponse(
         url=f"/error?message={error_message}",
         status_code=status.HTTP_307_TEMPORARY_REDIRECT

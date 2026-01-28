@@ -1,10 +1,26 @@
 from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
 
+from ..config import config
+
 
 web_router = APIRouter()
-jinja_templates = Jinja2Templates(directory="src/jis/web/templates")
 
+jinja_templates = Jinja2Templates(directory="src/jis/web/templates")
+jinja_templates.env.globals["config"] = config
+
+
+# Добавьте тестовый роут
+@web_router.get("/debug-config")
+async def debug_config(request: Request):
+    import os
+    return {
+        "config_in_globals": "config" in jinja_templates.env.globals,
+        "config_keys": dir(config) if hasattr(config, '__dict__') else [],
+        "ENVIRONMENT": getattr(config, 'ENVIRONMENT', 'NOT SET'),
+        "DEBUG": getattr(config, 'DEBUG', 'NOT SET'),
+        "env_vars": {k: v for k, v in os.environ.items() if 'ENV' in k or 'DEBUG' in k}
+    }
 
 # Main Panel
 

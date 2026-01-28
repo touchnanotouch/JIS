@@ -4,6 +4,7 @@ services:
       context: .
       dockerfile: docker/Dockerfile.dev
     environment:
+      - VERSION=0.1.0-dev
       - RELOAD=True
       - DEBUG=True
       - LOG_LEVEL=DEBUG
@@ -12,7 +13,7 @@ services:
       - ./pyproject.toml:/app/pyproject.toml
       - ./logs:/app/logs
     command: >
-      sh -c "uvicorn src.jis.main:app --host ${HOST} --port ${PORT} --reload --reload-dir /app/src"
+      uvicorn src.jis.main:app --host 0.0.0.0 --port ${PORT} --reload --reload-dir /app/src
     ports:
       - "${PORT}:${PORT}"
       - "5678:5678"
