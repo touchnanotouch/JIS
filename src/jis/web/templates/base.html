@@ -23,18 +23,14 @@
         <!-- Sidebar -->
 
         <aside class="sidebar">
-            {% include "components/sidebar.html" %}
+            <div class="sidebar-wrapper">
+                {% include "components/sidebar.html" %}
+            </div>
         </aside>
-
+        
         <!-- Main Content -->
         
         <main class="main">
-            <!-- Header Block -->
-
-            <!-- <header class="header">
-                {% include "components/header.html" %}
-            </header> -->
-
             <!-- Page Block -->
 
             <div class="page-wrapper">
@@ -49,22 +45,24 @@
 
                 <div class="page-content">{% block pageContent %}{% endblock %}</div>
             </div>
-
-            <!-- Footer Block -->
-
-            <footer>
-                {% include "components/footer.html" %}
-            </footer>
         </main>
+
+        <!-- Footer Block -->
+
+        <footer class="footer">
+            <div class="footer-wrapper">
+                {% include "components/footer.html" %}
+            </div>
+        </footer>
     </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.querySelector('.sidebar');
+            const sidebar = document.querySelector('.sidebar-wrapper');
             const sidebarToggle = document.querySelector('.sidebar-toggle');
             const toggleIcon = document.querySelector('.toggle-icon');
             
 
-            const isCollapsed = localStorage.getItem('sidebar-collapsed') === 'true';
+            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
             if (isCollapsed) {
                 sidebar.classList.add('collapsed');
                 updateToggleIcon(true);
@@ -74,7 +72,7 @@
             sidebarToggle.addEventListener('click', function() {
                 const isNowCollapsed = sidebar.classList.toggle('collapsed');
                 
-                localStorage.setItem('sidebar-collapsed', isNowCollapsed);
+                localStorage.setItem('sidebarCollapsed', isNowCollapsed);
                 
 
                 updateToggleIcon(isNowCollapsed);

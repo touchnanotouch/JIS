@@ -8,6 +8,10 @@
 COMPOSE_DEV = docker compose
 COMPOSE_PROD = docker compose -f docker-compose.yml
 
+GIT_TAG := $(shell git describe --tags --abbrev=0 2>/dev/null || echo "dev")
+GIT_COMMIT_HASH := $(shell git rev-parse --short HEAD)
+GIT_COMMIT_DATE := $(shell git log -1 --format=%cd --date=format:"%Y-%m-%d %H:%M")
+
 # Commands
 
 help:
@@ -27,12 +31,12 @@ help:
 	@echo ""
 	@echo "Container access:"
 	@echo "  make shell         - Enter web container"
-	@echo "  make db-shell      - Enter database"
 	@echo "  make redis-shell   - Enter redis"
 	@echo ""
 	@echo "Maintenance:"
 	@echo "  make clean         - Remove everything"
 	@echo "  make restart       - Restart services"
+	@echo "  make update-info   - Update project info for footer"
 
 # Docker Compose
 
@@ -77,9 +81,6 @@ ps:
 shell:
 	$(COMPOSE_DEV) exec web bash
 
-db-shell:
-	$(COMPOSE_DEV) exec db psql -U postgres
-
 redis-shell:
 	$(COMPOSE_DEV) exec redis redis-cli
 
@@ -90,3 +91,16 @@ clean:
 
 restart:
 	$(COMPOSE_DEV) restart
+
+update-info:
+	@echo "Updating git information in .env"
+	@if [ -f .env ]; then \
+		sed -i.bak '/^GIT_TAG=/d' .env; \
+		sed -i.bak '/^GIT_COMMIT_HASH=/d' .env; \
+		sed -i.bak '/^GIT_COMMIT_DATE=/d' .env; \
+		rm -f .env.bak; \
+	fi
+	@echo "GIT_TAG=$(GIT_TAG)" >> .env
+	@echo "GIT_COMMIT_HASH=$(GIT_HASH)" >> .env
+	@echo "GIT_COMMIT_DATE=$(GIT_COMMIT_DATE)" >> .env
+	@echo "Git info updated!"

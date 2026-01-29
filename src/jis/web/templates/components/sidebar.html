@@ -16,7 +16,7 @@
                 </svg>
             </div>
             <div class="logo-text">
-                <span class="logo-name">JIS</span>
+                <span>JIS</span>
             </div>
         </a>
 
@@ -30,102 +30,102 @@
 <!-- Nav -->
 
 <nav class="sidebar-nav">
-    <ul class="nav-menu">
+    <ul class="sidebar-nav-list">
         <!-- Main Panel -->
 
-        <li class="nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
-            <a href="{{ url_for('dashboard') }}" class="nav-link" title="Главная панель">
-                <i class="fas fa-home nav-icon"></i>
-                <span class="nav-text">Главная панель</span>
+        <li class="sidebar-nav-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
+            <a href="{{ url_for('dashboard') }}" class="sidebar-nav-link" title="Главная панель">
+                <i class="fas fa-home sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Главная панель</span>
             </a>
         </li>
-        
+
         <!-- Vacancies -->
 
-        <li class="nav-group-divider">
-            <span class="nav-group-title">Вакансии</span>
+        <li class="sidebar-nav-divider">
+            <span class="sidebar-nav-divider-text">Вакансии</span>
         </li>
-        
-        <li class="nav-item {% if request.endpoint == 'favorites' %}active{% endif %}">
-            <a href="{{ url_for('favorites') }}" class="nav-link" title="Избранное">
-                <i class="fas fa-star nav-icon"></i>
-                <span class="nav-text">Избранное</span>
+
+        <li class="sidebar-nav-item {% if request.endpoint == 'favorites' %}active{% endif %}">
+            <a href="{{ url_for('favorites') }}" class="sidebar-nav-link" title="Избранное">
+                <i class="fas fa-star sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Избранное</span>
             </a>
         </li>
 
-        <li class="nav-item {% if request.endpoint == 'job_search' %}active{% endif %}">
-            <a href="{{ url_for('search') }}" class="nav-link" title="Поиск">
-                <i class="fas fa-search nav-icon"></i>
-                <span class="nav-text">Поиск</span>
+        <li class="sidebar-nav-item {% if request.endpoint == 'job_search' %}active{% endif %}">
+            <a href="{{ url_for('search') }}" class="sidebar-nav-link" title="Поиск">
+                <i class="fas fa-search sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Поиск</span>
             </a>
         </li>
-        
+
         <!-- Responses -->
 
-        <li class="nav-group-divider">
-            <span class="nav-group-title">Отклики</span>
+        <li class="sidebar-nav-divider">
+            <span class="sidebar-nav-divider-text">Отклики</span>
         </li>
         
-        <li class="nav-item {% if request.endpoint == 'responses' %}active{% endif %}">
-            <a href="{{ url_for('responses') }}" class="nav-link" title="История откликов">
-                <i class="fas fa-paper-plane nav-icon"></i>
-                <span class="nav-text">История откликов</span>
+        <li class="sidebar-nav-item {% if request.endpoint == 'responses' %}active{% endif %}">
+            <a href="{{ url_for('responses') }}" class="sidebar-nav-link" title="История откликов">
+                <i class="fas fa-paper-plane sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">История откликов</span>
             </a>
         </li>
 
-        <li class="nav-item {% if request.endpoint == 'templates' %}active{% endif %}">
-            <a href="{{ url_for('templates') }}" class="nav-link">
-                <i class="fas fa-file-alt nav-icon" title="Шаблоны откликов"></i>
-                <span class="nav-text">Шаблоны откликов</span>
+        <li class="sidebar-nav-item {% if request.endpoint == 'templates' %}active{% endif %}">
+            <a href="{{ url_for('templates') }}" class="sidebar-nav-link">
+                <i class="fas fa-file-alt sidebar-nav-icon" title="Шаблоны откликов"></i>
+                <span class="sidebar-nav-text">Шаблоны откликов</span>
             </a>
         </li>
 
         <!-- Responses (auto) -->
 
-        <li class="nav-item {% if request.endpoint == 'auto_responses' %}active{% endif %}">
-            <a href="{{ url_for('auto_responses') }}" class="nav-link" title="Авто-отклики">
-                <i class="fas fa-robot nav-icon"></i>
-                <span class="nav-text">Авто-отклики</span>
+        <li class="sidebar-nav-item {% if request.endpoint == 'auto_responses' %}active{% endif %}">
+            <a href="{{ url_for('auto_responses') }}" class="sidebar-nav-link" title="Авто-отклики">
+                <i class="fas fa-robot sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Авто-отклики</span>
             </a>
         </li>
-        
+
         <!-- Analytics -->
 
-        <li class="nav-group-divider">
-            <span class="nav-group-title">Аналитика</span>
+        <li class="sidebar-nav-divider">
+            <span class="sidebar-nav-divider-text">Аналитика</span>
         </li>
-        
-        <li class="nav-item {% if request.endpoint == 'statistics' %}active{% endif %}">
-            <a href="{{ url_for('statistics') }}" class="nav-link" title="Статистика">
-                <i class="fas fa-bar-chart nav-icon"></i>
-                <span class="nav-text">Статистика</span>
+
+        <li class="sidebar-nav-item {% if request.endpoint == 'statistics' %}active{% endif %}">
+            <a href="{{ url_for('statistics') }}" class="sidebar-nav-link" title="Статистика">
+                <i class="fas fa-bar-chart sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Статистика</span>
             </a>
         </li>
 
         <!-- System -->
 
-        <li class="nav-group-divider">
-            <span class="nav-group-title">Система</span>
+        <li class="sidebar-nav-divider">
+            <span class="sidebar-nav-divider-text">Система</span>
         </li>
-        
-        <li class="nav-item {% if request.endpoint == 'sources' %}active{% endif %}">
-            <a href="{{ url_for('sources') }}" class="nav-link" title="Источники">
-                <i class="fas fa-database nav-icon"></i>
-                <span class="nav-text">Источники</span>
+
+        <li class="sidebar-nav-item {% if request.endpoint == 'sources' %}active{% endif %}">
+            <a href="{{ url_for('sources') }}" class="sidebar-nav-link" title="Источники">
+                <i class="fas fa-database sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Источники</span>
             </a>
         </li>
-        
-        <li class="nav-item {% if request.endpoint == 'parser' %}active{% endif %}">
-            <a href="{{ url_for('parser') }}" class="nav-link" title="Парсер">
-                <i class="fas fa-code nav-icon"></i>
-                <span class="nav-text">Парсер</span>
+
+        <li class="sidebar-nav-item {% if request.endpoint == 'parser' %}active{% endif %}">
+            <a href="{{ url_for('parser') }}" class="sidebar-nav-link" title="Парсер">
+                <i class="fas fa-code sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Парсер</span>
             </a>
         </li>
-        
-        <li class="nav-item {% if request.endpoint == 'notifications' %}active{% endif %}">
-            <a href="{{ url_for('notifications') }}" class="nav-link" title="Уведомления">
-                <i class="fas fa-bell nav-icon"></i>
-                <span class="nav-text">Уведомления</span>
+
+        <li class="sidebar-nav-item {% if request.endpoint == 'notifications' %}active{% endif %}">
+            <a href="{{ url_for('notifications') }}" class="sidebar-nav-link" title="Уведомления">
+                <i class="fas fa-bell sidebar-nav-icon"></i>
+                <span class="sidebar-nav-text">Уведомления</span>
             </a>
         </li>
     </ul>
@@ -148,10 +148,10 @@
                 </span>
             </div>
         </div>
-        
+
         <div class="profile-actions">
             <!-- Account -->
-            
+
             <a href="{{ url_for('settings') }}" class="profile-action" title="Настройки">
                 <i class="fas fa-cog"></i>
             </a>

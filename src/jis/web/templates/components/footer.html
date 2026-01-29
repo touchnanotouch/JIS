@@ -1,13 +1,52 @@
-<div class="footer-wrapper">
-    <p class="footer-content">
-        <span class="version-info">
-            <code>{{ config.VERSION }}</code>
-            <span class="separator">|</span>
-            <code>{{ config.COMMIT_HASH }}</code>
-            <span class="separator">|</span>
-            <code>{{ config.BUILD_DATE }}</code>
-        </span>
-        <span class="separator">|</span>
-        <a href="https://github.com/touchnanotouch" target="_blank">GitHub</a>
-    </p>
+<!-- Git Tag -->
+
+<div class="footer-item">
+    <span class="footer-text" title="Версия приложения">
+        <i class="fas fa-tag"></i>
+        <code class="footer-value version-tag">
+            {{ config.GIT_TAG }}
+        </code>
+    </span>
+</div>
+
+<div class="footer-separator">|</div>
+
+<!-- Git Commit Hash -->
+
+<div class="footer-item">
+    <span class="footer-text" title="Хеш коммита">
+        <i class="fas fa-code-commit"></i>
+        <code class="footer-value commit-hash">
+            {{ config.GIT_COMMIT_HASH }}
+        </code>
+    </span>
+</div>
+
+<div class="footer-separator">|</div>
+
+<!-- Git Commit Date -->
+
+<div class="footer-item">
+    <span class="footer-text" title="Дата коммита">
+        <i class="fas fa-calendar-alt"></i>
+        <time datetime="{{ config.GIT_COMMIT_DATE }}" class="footer-value build-date">
+            {{ config.GIT_COMMIT_DATE }}
+        </time>
+    </span>
+</div>
+
+<div class="footer-separator">|</div>
+
+<!-- Github Link -->
+
+<div class="footer-item">
+    <a href="https://github.com/touchnanotouch" 
+       target="_blank" 
+       rel="noopener noreferrer"
+       class="footer-link"
+       title="GitHub профиль"
+    >
+        <i class="fab fa-github"></i>
+        <span class="footer-value github-username">touchnanotouch</span>
+    </a>
 </div>

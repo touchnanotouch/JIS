@@ -15,7 +15,6 @@ class Config(BaseSettings):
 
     # Environment settings
 
-    VERSION: str = os.getenv("VERSION", "0.1.0")
     ENVIRONMENT: str = os.getenv("ENVIRONMENT", "development")
     DEBUG: bool = os.getenv("DEBUG", "True").lower() == "true"
 
@@ -82,6 +81,12 @@ class Config(BaseSettings):
 
     MAX_VACANCIES_PER_SEARCH: int = int(os.getenv("MAX_VACANCIES_PER_SEARCH", "100"))
     MAX_APPLICATIONS_PER_DAY: int = int(os.getenv("MAX_APPLICATIONS_PER_DAY", "50"))
+
+    # Project info
+
+    GIT_TAG: str = os.getenv("GIT_TAG", "dev")
+    GIT_COMMIT_HASH: str = os.getenv("GIT_COMMIT_HASH", "abc123")
+    GIT_COMMIT_DATE: str = os.getenv("BUILD_DATE", "2026-01-01 04:30:00")
 
     class Config:
         env_file = ".env"

@@ -1,4 +1,4 @@
-/* base/_reset.css */
+/* core/_reset.css */
 
 
 * {
@@ -8,25 +8,11 @@
     font: inherit;
 }
 
-body {
+html, body {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
     font-family: var(--font-sans);
-}
-
-.app-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.app-container:has(.sidebar:not(.collapsed)) {
-    padding-left: var(--sidebar-width);
-}
-
-.app-container:has(.sidebar.collapsed) {
-    padding-left: var(--sidebar-width-collapsed);
 }
 
 /* ::-webkit-scrollbar {

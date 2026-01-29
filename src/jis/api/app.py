@@ -11,7 +11,7 @@ def create_app() -> FastAPI:
     app = FastAPI(
         title="JIS",
         description="Job Search Aggregator",
-        version="0.1.0",
+        version=config.GIT_TAG,
         docs_url="/api/docs" if config.SHOW_DOCS else None,
         redoc_url="/api/redoc" if config.SHOW_DOCS else None,
         openapi_url="/api/openapi.json" if config.SHOW_DOCS else None,
