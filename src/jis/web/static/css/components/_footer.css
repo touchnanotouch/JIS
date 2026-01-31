@@ -1,7 +1,65 @@
 /* components/_footer.css */
 
+
 .footer-wrapper {
     display: flex;
     flex-direction: row;
+    align-items: center;
     justify-content: center;
+    padding: var(--space-1) 0;
+    background: var(--bg-surface);
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-2);
+    border-right: 1px solid var(--border-light);
+    transition: background-color var(--transition-fast) ease-in-out;
+}
+
+.footer-item:last-child {
+    border-right: none;
+}
+
+.footer-text,
+.footer-link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    white-space: nowrap;
+    color: var(--text-secondary);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast) ease-in-out;
+}
+
+.footer-value {
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    background: var(--color-gray-100);
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-light);
+    transition: all var(--transition-fast) ease-in-out;
+}
+
+.footer-item:hover .footer-value,
+.footer-link:hover .footer-value {
+    background: var(--color-gray-200);
+    border-color: var(--border-base);
+}
+
+.footer-item i,
+.footer-link i {
+    font-size: var(--text-sm);
+    color: var(--color-gray-500);
+    text-align: center;
+    transition: color var(--transition-fast) ease-in-out;
+}
+
+.footer-item:hover i,
+.footer-link:hover i {
+    color: var(--text-primary);
 }

@@ -17,15 +17,21 @@
 }
 
 .main {
-    width: 100%;
+    width: calc(100% - var(--sidebar-current-width));
     min-height: 100vh;
-    margin-left: var(--sidebar-width);
+    position: relative;
+    left: var(--sidebar-current-width);
+    transition: width var(--transition-normal) ease-out,
+                left var(--transition-normal) ease-out;
 }
 
 .footer {
-    width: 100%;
+    width: calc(100% - var(--sidebar-current-width));
     position: fixed;
     bottom: 0;
-    margin-left: var(--sidebar-width);
     z-index: var(--z-fixed);
+    left: var(--sidebar-current-width);
+    transition: width var(--transition-normal) ease-out,
+                left var(--transition-normal) ease-out;
+    border-top: 1px solid var(--border-light);
 }

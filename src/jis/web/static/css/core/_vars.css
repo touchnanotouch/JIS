@@ -64,6 +64,8 @@
     --sidebar-width: 16rem; /* 256px */
     --sidebar-width-collapsed: 4rem; /* 64px */
 
+    --sidebar-current-width: var(--sidebar-width);
+
     /* Text Sizes */
 
     --text-xs: 0.75rem;   /* 12px */

@@ -10,11 +10,15 @@
 
     <!-- Main CSS Loader -->
 
-    <link rel="stylesheet" href="/static/css/loader.css">
+    <link rel="stylesheet" href="static/css/loader.css">
 
     <!-- Font Awesome (for icons) -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- Main Js Script -->
+
+    <script src="static/js/main.js"></script>
 </head>
 <body>
     <!-- App Container -->
@@ -55,41 +59,5 @@
             </div>
         </footer>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const sidebar = document.querySelector('.sidebar-wrapper');
-            const sidebarToggle = document.querySelector('.sidebar-toggle');
-            const toggleIcon = document.querySelector('.toggle-icon');
-            
-
-            const isCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
-            if (isCollapsed) {
-                sidebar.classList.add('collapsed');
-                updateToggleIcon(true);
-            }
-            
-
-            sidebarToggle.addEventListener('click', function() {
-                const isNowCollapsed = sidebar.classList.toggle('collapsed');
-                
-                localStorage.setItem('sidebarCollapsed', isNowCollapsed);
-                
-
-                updateToggleIcon(isNowCollapsed);
-            });
-            
-            function updateToggleIcon(isCollapsed) {
-                if (toggleIcon) {
-                    if (isCollapsed) {
-                        toggleIcon.classList.remove('fa-chevron-left');
-                        toggleIcon.classList.add('fa-chevron-right');
-                    } else {
-                        toggleIcon.classList.remove('fa-chevron-right');
-                        toggleIcon.classList.add('fa-chevron-left');
-                    }
-                }
-            }
-        });
-    </script>
 </body>
 </html>

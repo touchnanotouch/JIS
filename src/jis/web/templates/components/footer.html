@@ -3,39 +3,33 @@
 <div class="footer-item">
     <span class="footer-text" title="Версия приложения">
         <i class="fas fa-tag"></i>
-        <code class="footer-value version-tag">
+        <span class="footer-value">
             {{ config.GIT_TAG }}
-        </code>
+        </span>
     </span>
 </div>
-
-<div class="footer-separator">|</div>
 
 <!-- Git Commit Hash -->
 
 <div class="footer-item">
     <span class="footer-text" title="Хеш коммита">
         <i class="fas fa-code-commit"></i>
-        <code class="footer-value commit-hash">
+        <span class="footer-value">
             {{ config.GIT_COMMIT_HASH }}
-        </code>
+        </span>
     </span>
 </div>
-
-<div class="footer-separator">|</div>
 
 <!-- Git Commit Date -->
 
 <div class="footer-item">
     <span class="footer-text" title="Дата коммита">
         <i class="fas fa-calendar-alt"></i>
-        <time datetime="{{ config.GIT_COMMIT_DATE }}" class="footer-value build-date">
+        <time datetime="{{ config.GIT_COMMIT_DATE }}" class="footer-value">
             {{ config.GIT_COMMIT_DATE }}
         </time>
     </span>
 </div>
-
-<div class="footer-separator">|</div>
 
 <!-- Github Link -->
 
@@ -47,6 +41,6 @@
        title="GitHub профиль"
     >
         <i class="fab fa-github"></i>
-        <span class="footer-value github-username">touchnanotouch</span>
+        <span class="footer-value">touchnanotouch</span>
     </a>
 </div>

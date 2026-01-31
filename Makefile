@@ -101,6 +101,6 @@ update-info:
 		rm -f .env.bak; \
 	fi
 	@echo "GIT_TAG=$(GIT_TAG)" >> .env
-	@echo "GIT_COMMIT_HASH=$(GIT_HASH)" >> .env
+	@echo "GIT_COMMIT_HASH=$(GIT_COMMIT_HASH)" >> .env
 	@echo "GIT_COMMIT_DATE=$(GIT_COMMIT_DATE)" >> .env
 	@echo "Git info updated!"

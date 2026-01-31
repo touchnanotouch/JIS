@@ -1,3 +1,6 @@
+/* components/components.css */
+
 
 @import url("./_sidebar.css");
+@import url("./_page.css");
 @import url("./_footer.css");
