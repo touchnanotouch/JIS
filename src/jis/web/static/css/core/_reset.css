@@ -2,17 +2,33 @@
 
 
 * {
-    margin: 0;
+    /* Box Model */
+
     padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+
+    /* Typography */
+
     font: inherit;
+
+    /* Visual */
+
+    box-sizing: border-box;
 }
 
 html, body {
-    height: 100%;
+    /* Box Model */
+
     width: 100%;
-    overflow-x: hidden;
+    height: 100%;
+
+    /* Typography */
+
     font-family: var(--font-sans);
+
+    /* Visual */
+
+    overflow-x: hidden;
 }
 
 /* ::-webkit-scrollbar {

@@ -1,0 +1,339 @@
+/* components/_login.css */
+
+.login-wrapper {
+    /* Box Model */
+    min-height: 100%;
+    
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    /* Box Model */
+    width: 100%;
+    max-width: 28rem; /* 448px */
+    
+    /* Visual */
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.login-card__header {
+    /* Box Model */
+    padding: var(--space-8) var(--space-6) var(--space-4);
+    
+    /* Typography */
+    text-align: center;
+    
+    /* Visual */
+    background: linear-gradient(to bottom, var(--color-gray-50), var(--bg-surface));
+    border-bottom: 1px solid var(--border-light);
+}
+
+.login-card__icon {
+    /* Box Model */
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto var(--space-4);
+    
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Visual */
+    background: var(--color-gray-100);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-full);
+    
+    /* Typography */
+    color: var(--brand-primary);
+    font-size: 2rem;
+}
+
+.login-card__title {
+    /* Box Model */
+    margin-bottom: var(--space-2);
+    
+    /* Typography */
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.login-card__subtitle {
+    /* Typography */
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+}
+
+.login-form {
+    /* Box Model */
+    padding: var(--space-6);
+}
+
+/* Forms */
+.form-group {
+    /* Box Model */
+    margin-bottom: var(--space-5);
+}
+
+.form-group--inline {
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form-label {
+    /* Box Model */
+    margin-bottom: var(--space-2);
+    gap: var(--space-2);
+    
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    
+    /* Typography */
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.form-label i {
+    /* Box Model */
+    width: 1.25rem;
+    
+    /* Typography */
+    color: var(--brand-primary);
+    text-align: center;
+}
+
+.form-input {
+    /* Box Model */
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    
+    /* Typography */
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    
+    /* Visual */
+    background: var(--color-gray-50);
+    border: 1px solid var(--border-base);
+    border-radius: var(--radius-lg);
+    
+    /* Animation */
+    transition: all var(--transition-fast) ease-in-out;
+}
+
+.form-input:focus {
+    /* Visual */
+    outline: none;
+    border-color: var(--brand-primary);
+    background: var(--bg-surface);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-input::placeholder {
+    /* Typography */
+    color: var(--color-gray-400);
+}
+
+/* Checkbox */
+.checkbox {
+    /* Box Model */
+    gap: var(--space-2);
+    
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    
+    /* Interactive */
+    cursor: pointer;
+}
+
+.checkbox__input {
+    /* Box Model */
+    width: 1.25rem;
+    height: 1.25rem;
+    
+    /* Visual */
+    border: 2px solid var(--border-base);
+    border-radius: var(--radius-sm);
+    
+    /* Interactive */
+    cursor: pointer;
+}
+
+.checkbox__label {
+    /* Typography */
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+}
+
+/* Alerts */
+.alert {
+    /* Box Model */
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    gap: var(--space-3);
+    
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    
+    /* Typography */
+    font-size: var(--text-sm);
+    
+    /* Visual */
+    border-radius: var(--radius-lg);
+}
+
+.alert--danger {
+    /* Visual */
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    
+    /* Typography */
+    color: #991b1b;
+}
+
+.alert--danger i {
+    /* Typography */
+    color: #dc2626;
+}
+
+/* Buttons */
+.btn {
+    /* Box Model */
+    padding: var(--space-3) var(--space-5);
+    gap: var(--space-2);
+    
+    /* Flexbox */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* Typography */
+    font-size: var(--text-sm);
+    font-weight: 500;
+    
+    /* Visual */
+    border: none;
+    border-radius: var(--radius-lg);
+    
+    /* Interactive */
+    cursor: pointer;
+    
+    /* Animation */
+    transition: all var(--transition-fast) ease-in-out;
+}
+
+.btn--primary {
+    /* Visual */
+    background: var(--brand-primary);
+    
+    /* Typography */
+    color: white;
+}
+
+.btn--primary:hover {
+    /* Visual */
+    background: #1d4ed8;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.btn--block {
+    /* Box Model */
+    width: 100%;
+}
+
+/* Auth links */
+.login-links {
+    /* Box Model */
+    margin-top: var(--space-6);
+    padding-top: var(--space-4);
+    gap: var(--space-3);
+    
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    /* Visual */
+    border-top: 1px solid var(--border-light);
+}
+
+.login-link {
+    /* Box Model */
+    gap: var(--space-2);
+    
+    /* Flexbox */
+    display: inline-flex;
+    align-items: center;
+    
+    /* Typography */
+    color: var(--text-muted);
+    font-size: var(--text-sm);
+    text-decoration: none;
+    
+    /* Animation */
+    transition: color var(--transition-fast) ease-in-out;
+}
+
+.login-link:hover {
+    /* Typography */
+    color: var(--brand-primary);
+}
+
+.login-link i {
+    /* Typography */
+    font-size: var(--text-xs);
+}
+
+/* Logout additions */
+.logout-message {
+    /* Box Model */
+    padding: var(--space-4) 0;
+    
+    /* Typography */
+    text-align: center;
+}
+
+.logout-message__text {
+    /* Typography */
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.login-actions {
+    /* Box Model */
+    gap: var(--space-3);
+    
+    /* Flexbox */
+    display: flex;
+    flex-direction: column;
+}
+
+.btn--secondary {
+    /* Visual */
+    background: var(--color-gray-100);
+    border: 1px solid var(--border-base);
+    
+    /* Typography */
+    color: var(--text-primary);
+}
+
+.btn--secondary:hover {
+    /* Visual */
+    background: var(--color-gray-200);
+    border-color: var(--border-dark);
+}

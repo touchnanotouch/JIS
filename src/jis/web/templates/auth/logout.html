@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}JIS - Выход{% endblock %}
+
+{% block pageTitle %}Выход из аккаунта{% endblock %}
+
+{% block pageContent %}
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-card__header">
+            <div class="auth-card__icon">
+                <i class="fas fa-sign-out-alt"></i>
+            </div>
+            <h2 class="auth-card__title">До свидания!</h2>
+            <p class="auth-card__subtitle">Вы успешно вышли из аккаунта</p>
+        </div>
+        
+        <div class="auth-form">
+            <div class="logout-message">
+                <p class="logout-message__text">
+                    Спасибо, что были с нами. Ждем вас снова!
+                </p>
+            </div>
+            
+            <div class="auth-actions">
+                <a href="{{ url_for('login') }}" class="btn btn--primary btn--block">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Войти снова
+                </a>
+                <a href="{{ url_for('dashboard') }}" class="btn btn--secondary btn--block">
+                    <i class="fas fa-home"></i>
+                    На главную
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

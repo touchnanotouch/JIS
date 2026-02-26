@@ -21,9 +21,9 @@
     <script src="static/js/main.js"></script>
 </head>
 <body>
-    <!-- App Container -->
+    <!-- App -->
 
-    <div class="app-container">
+    <div class="app">
         <!-- Sidebar -->
 
         <aside class="sidebar">
@@ -31,18 +31,15 @@
                 {% include "components/sidebar.html" %}
             </div>
         </aside>
-        
-        <!-- Main Content -->
-        
-        <main class="main">
-            <!-- Page Block -->
 
+        <!-- Main Content -->
+
+        <main class="main">
             <div class="page-wrapper">
                 <!-- Page Header -->
 
                 <header class="page-header">
                     <h1 class="page-title">{% block pageTitle %}{% endblock %}</h1>
-
                 </header>
 
                 <!-- Page Content -->
@@ -51,7 +48,7 @@
             </div>
         </main>
 
-        <!-- Footer Block -->
+        <!-- Footer -->
 
         <footer class="footer">
             <div class="footer-wrapper">

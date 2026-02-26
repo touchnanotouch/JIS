@@ -10,18 +10,6 @@ jinja_templates = Jinja2Templates(directory="src/jis/web/templates")
 jinja_templates.env.globals["config"] = config
 
 
-# Добавьте тестовый роут
-@web_router.get("/debug-config")
-async def debug_config(request: Request):
-    import os
-    return {
-        "config_in_globals": "config" in jinja_templates.env.globals,
-        "config_keys": dir(config) if hasattr(config, '__dict__') else [],
-        "ENVIRONMENT": getattr(config, 'ENVIRONMENT', 'NOT SET'),
-        "DEBUG": getattr(config, 'DEBUG', 'NOT SET'),
-        "env_vars": {k: v for k, v in os.environ.items() if 'ENV' in k or 'DEBUG' in k}
-    }
-
 # Main Panel
 
 @web_router.get("/dashboard", name="dashboard")
@@ -88,7 +76,7 @@ async def register(request: Request):
 
 @web_router.get("/logout", name="logout")
 async def logout(request: Request):
-    return jinja_templates.TemplateResponse("dashboard/dashboard.html", {"request": request})
+    return jinja_templates.TemplateResponse("auth/logout.html", {"request": request})
 
 
 # @web_router.get("/help", name="help")

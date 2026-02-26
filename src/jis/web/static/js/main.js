@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const sidebar = document.querySelector(".sidebar-wrapper");
+    const sidebar = document.querySelector(".sidebar");
     const sidebarToggle = document.querySelector(".sidebar-toggle");
     const toggleIcon = document.querySelector(".toggle-icon");
 

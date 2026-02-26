@@ -1,37 +1,80 @@
 /* core/_layout.css */
 
 
-.app-container {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+.app {
+    /* Box Model */
+
     width: 100%;
+    min-height: 100vh;
 }
 
 .sidebar {
+    /* Positioning */
+
     position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
+
     z-index: var(--z-fixed);
+
+    /* Box Model */
+
+    width: var(--sidebar-width);
+
+    /* Animation */
+
+    transition: width var(--transition-normal) ease-out;
+}
+
+.sidebar.collapsed {
+    /* Box Model */
+
+    width: var(--sidebar-width-collapsed);
 }
 
 .main {
-    width: calc(100% - var(--sidebar-current-width));
-    min-height: 100vh;
+    /* Positioning */
+
     position: relative;
+
     left: var(--sidebar-current-width);
+    
+    /* Box Model */
+
+    width: calc(100% - var(--sidebar-current-width));
+    height: calc(100vh - var(--footer-height));
+    
+    /* Animation */
+
     transition: width var(--transition-normal) ease-out,
                 left var(--transition-normal) ease-out;
 }
 
 .footer {
-    width: calc(100% - var(--sidebar-current-width));
+    /* Positioning */
+
     position: fixed;
-    bottom: 0;
-    z-index: var(--z-fixed);
+
     left: var(--sidebar-current-width);
+    bottom: 0;
+
+    z-index: var(--z-fixed);
+
+    /* Box Model */
+
+    width: calc(100% - var(--sidebar-current-width));
+    height: var(--footer-height);
+
+    /* Flex */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Visual */
+
+    border-top: 1px solid var(--border-light);
+
+    /* Animation */
+
     transition: width var(--transition-normal) ease-out,
                 left var(--transition-normal) ease-out;
-    border-top: 1px solid var(--border-light);
 }

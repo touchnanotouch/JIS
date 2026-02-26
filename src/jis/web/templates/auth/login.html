@@ -1,82 +1,74 @@
 {% extends "base.html" %}
 
-{% block title %}Вход в аккаунт{% endblock %}
+{% block title %}JIS - Вход{% endblock %}
+
+{% block pageTitle %}Вход в аккаунт{% endblock %}
 
 {% block pageContent %}
 
-<div class="auth-container">
-    <div class="auth-card">
-        <div class="auth-header">
-            <h2 class="auth-title">Добро пожаловать в JIS</h2>
-            <p class="auth-subtitle">Войдите в свой аккаунт</p>
-        </div>
-
-        <!-- {% if error %}
-        <div class="auth-error">
-            <i class="fas fa-exclamation-circle"></i>
-            <span>{{ error }}</span>
-        </div>
-        {% endif %} -->
-
-        <form method="POST" action="{{ url_for('login') }}" class="auth-form">
-            <div class="form-group">
-                <label for="email" class="form-label">
-                    <i class="fas fa-envelope"></i>
-                    <span>Email адрес</span>
-                </label>
-                <input 
-                    type="email" 
-                    id="email" 
-                    name="email" 
-                    class="form-input"
-                    placeholder="your@email.com"
-                    required
-                    autofocus
-                >
+<div class="login-wrapper">
+    <div class="login-card">
+        <div class="login-card__header">
+            <div class="login-card__icon">
+                <i class="fas fa-sign-in-alt"></i>
             </div>
-
+            <h2 class="login-card__title">Добро пожаловать!</h2>
+            <p class="login-card__subtitle">Войдите, чтобы продолжить</p>
+        </div>
+        
+        <form method="POST" action="{{ url_for('login') }}" class="login-form">
+            {% if error %}
+            <div class="alert alert--danger">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>{{ error }}</span>
+            </div>
+            {% endif %}
+            
+            <div class="form-group">
+                <label for="email_or_username" class="form-label">
+                    <i class="fas fa-user"></i>
+                    <span>Email или имя пользователя</span>
+                </label>
+                <input type="text" id="email_or_username" name="email_or_username" 
+                       class="form-input" required autofocus
+                       value="{{ request.query_params.get('email', '') }}"
+                       placeholder="example@mail.com или username">
+            </div>
+            
             <div class="form-group">
                 <label for="password" class="form-label">
                     <i class="fas fa-lock"></i>
                     <span>Пароль</span>
                 </label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    class="form-input"
-                    placeholder="Введите пароль"
-                    required
-                >
+                <input type="password" id="password" name="password" 
+                       class="form-input" required
+                       placeholder="••••••••">
             </div>
-
-            <div class="form-options">
-                <label class="checkbox-label">
-                    <input type="checkbox" name="remember" class="checkbox">
-                    <span>Запомнить меня</span>
+            
+            <div class="form-group form-group--inline">
+                <label class="checkbox">
+                    <input type="checkbox" name="remember_me" class="checkbox__input">
+                    <span class="checkbox__label">Запомнить меня</span>
                 </label>
-                <a href="#" class="forgot-password">Забыли пароль?</a>
             </div>
-
-            <button type="submit" class="btn btn-primary btn-block">
+            
+            <button type="submit" class="btn btn--primary btn--block">
                 <i class="fas fa-sign-in-alt"></i>
-                <span>Войти в аккаунт</span>
+                Войти
             </button>
-
-            <div class="auth-divider">
-                <span>или</span>
-            </div>
-
-            <button type="button" class="btn btn-outline btn-block">
-                <i class="fab fa-google"></i>
-                <span>Войти через Google</span>
-            </button>
-
-            <div class="auth-footer">
-                <span>Нет аккаунта?</span>
-                <a href="#" class="auth-link">Зарегистрироваться</a>
+            
+            <div class="login-links">
+                <a href="{{ url_for('register') }}" class="login-link">
+                    <i class="fas fa-user-plus"></i>
+                    Создать аккаунт
+                </a>
+                <!-- <a href="#" class="login-link">
+                    <i class="fas fa-key"></i>
+                    Забыли пароль?
+                </a> -->
             </div>
         </form>
     </div>
 </div>
+
 {% endblock %}
