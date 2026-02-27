@@ -2,23 +2,25 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
 
     <!-- Title -->
 
-    <title>{% block title %}JIS{% endblock %}</title>
-
-    <!-- Main CSS Loader -->
-
-    <link rel="stylesheet" href="static/css/loader.css">
+    <title>
+        {% block title %}JIS{% endblock %}
+    </title>
 
     <!-- Font Awesome (for icons) -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 
-    <!-- Main Js Script -->
+    <!-- Main CSS Loader -->
 
-    <script src="static/js/main.js"></script>
+    <link rel="stylesheet" href="static/css/loader.css">
+
+    <!-- Main JS Script -->
+
+    <script src="static/js/main.js" defer></script>
 </head>
 <body>
     <!-- App -->
@@ -27,24 +29,32 @@
         <!-- Sidebar -->
 
         <aside class="sidebar">
-            <div class="sidebar-wrapper">
+            <div class="sidebar__wrapper">
                 {% include "components/sidebar.html" %}
             </div>
         </aside>
 
-        <!-- Main Content -->
+        <!-- Main -->
 
         <main class="main">
-            <div class="page-wrapper">
-                <!-- Page Header -->
+            <!-- Page -->
 
-                <header class="page-header">
-                    <h1 class="page-title">{% block pageTitle %}{% endblock %}</h1>
-                </header>
+            <div class="page">
+                <div class="page__wrapper">
+                    <!-- Page Header -->
 
-                <!-- Page Content -->
+                    <header class="page__header">
+                        <h1 class="page__title">
+                            {% block pageTitle %}{% endblock %}
+                        </h1>
+                    </header>
 
-                <div class="page-content">{% block pageContent %}{% endblock %}</div>
+                    <!-- Page Content -->
+
+                    <div class="page__content">
+                        {% block pageContent %}{% endblock %}
+                    </div>
+                </div>
             </div>
         </main>
 

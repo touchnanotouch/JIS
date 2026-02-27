@@ -13,7 +13,7 @@
 .login-card {
     /* Box Model */
     width: 100%;
-    max-width: 28rem; /* 448px */
+    max-width: 32rem; /* 448px */
     
     /* Visual */
     background: var(--bg-surface);
@@ -336,4 +336,23 @@
     /* Visual */
     background: var(--color-gray-200);
     border-color: var(--border-dark);
+}
+
+.auth-container {
+    /* Box Model */
+    min-height: 100%;
+    
+    /* Flexbox */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-card {
+    /* Visual */
+    background: var(--bg-surface);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-xl);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }

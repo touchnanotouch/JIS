@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     const sidebar = document.querySelector(".sidebar");
-    const sidebarToggle = document.querySelector(".sidebar-toggle");
+    const sidebarToggle = document.querySelector(".sidebar__toggle");
     const toggleIcon = document.querySelector(".toggle-icon");
 
     const isCollapsed = localStorage.getItem("sidebarCollapsed") === "true";
@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function() {
     );
 
     if (isCollapsed) {
-        sidebar.classList.add("collapsed");
+        sidebar.classList.add("sidebar--collapsed");
         updateToggleIcon(true);
     }
 
     sidebarToggle.addEventListener("click", function() {
-        const isNowCollapsed = !sidebar.classList.contains("collapsed");
+        const isNowCollapsed = !sidebar.classList.contains("sidebar--collapsed");
 
         document.documentElement.style.setProperty(
             "--sidebar-current-width",
@@ -24,9 +24,9 @@ document.addEventListener("DOMContentLoaded", function() {
         );
 
         if (isNowCollapsed) {
-            sidebar.classList.add("collapsed");
+            sidebar.classList.add("sidebar--collapsed");
         } else {
-            sidebar.classList.remove("collapsed");
+            sidebar.classList.remove("sidebar--collapsed");
         }
         
         localStorage.setItem("sidebarCollapsed", isNowCollapsed);
@@ -40,4 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 "fas fa-chevron-left toggle-icon";
         }
     }
+
+    sidebar.style.visibility = "visible";
 });

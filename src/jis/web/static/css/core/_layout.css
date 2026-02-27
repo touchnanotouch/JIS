@@ -18,13 +18,17 @@
     /* Box Model */
 
     width: var(--sidebar-width);
+    
+    /* Visual */
+
+    visibility: hidden;
 
     /* Animation */
 
-    transition: width var(--transition-normal) ease-out;
+    transition: width var(--transition-fast) ease-out;
 }
 
-.sidebar.collapsed {
+.sidebar--collapsed {
     /* Box Model */
 
     width: var(--sidebar-width-collapsed);
@@ -44,8 +48,15 @@
     
     /* Animation */
 
-    transition: width var(--transition-normal) ease-out,
-                left var(--transition-normal) ease-out;
+    transition: width var(--transition-fast) ease-out,
+                left var(--transition-fast) ease-out;
+}
+
+.page {
+    /* Box Model */
+
+    width: 100%;
+    height: 100%;
 }
 
 .footer {
@@ -75,6 +86,6 @@
 
     /* Animation */
 
-    transition: width var(--transition-normal) ease-out,
-                left var(--transition-normal) ease-out;
+    transition: width var(--transition-fast) ease-out,
+                left var(--transition-fast) ease-out;
 }
