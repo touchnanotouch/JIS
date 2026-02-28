@@ -38,6 +38,10 @@ document.addEventListener("DOMContentLoaded", function() {
             toggleIcon.className = isCollapsed ? 
                 "fas fa-chevron-right toggle-icon" : 
                 "fas fa-chevron-left toggle-icon";
+
+            toggleIcon.title = isCollapsed ?
+                "Развернуть сайдбар" :
+                "Свернуть сайдбар";
         }
     }
 

@@ -3,7 +3,7 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 from typing import Optional
 
-from ..database import get_db
+from ..core import db_manager
 from ..crud.user import get_user_by_id, get_session_by_token
 from ..utils.security import decode_token
 from ..models.user import User
@@ -13,7 +13,7 @@ security = HTTPBearer(auto_error=False)
 async def get_current_user(
     request: Request,
     credentials: Optional[HTTPAuthorizationCredentials] = Depends(security),
-    db: Session = Depends(get_db),
+    db: Session = Depends(db_manager.get_db),
 ) -> Optional[User]:
     # 1. Проверка JWT токена из заголовка (для API)
     if credentials:

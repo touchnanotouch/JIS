@@ -1,7 +1,7 @@
 <!-- Header -->
 
 <header class="sidebar__header">
-    <a href="{{ url_for('dashboard') }}" class="sidebar__logo-link">
+    <a href="{{ url_for('get_dashboard') }}" class="sidebar__logo-link" tabindex="-1">
         <div class="sidebar__logo-badge">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="20" cy="20" r="7" fill="#f3f4f6" stroke="#e5e7eb" stroke-width=".8"/>
@@ -19,8 +19,7 @@
         </div>
     </a>
 
-    <!-- TODO: Изменить title при сворачивании -->
-    <button class="sidebar__toggle" title="Свернуть боковую панель">
+    <button class="sidebar__toggle" title="Свернуть сайдбар">
         <i class="fas fa-chevron-left toggle-icon"></i>
     </button>
 </header>
@@ -32,7 +31,7 @@
         <!-- Main Panel -->
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'dashboard' %}active{% endif %}">
-            <a href="{{ url_for('dashboard') }}" class="sidebar__nav-list-link" title="Главная панель">
+            <a href="{{ url_for('get_dashboard') }}" class="sidebar__nav-list-link" title="Главная панель">
                 <i class="fas fa-home sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Главная панель</span>
             </a>
@@ -45,14 +44,14 @@
         </li>
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'favorites' %}active{% endif %}">
-            <a href="{{ url_for('favorites') }}" class="sidebar__nav-list-link" title="Избранное">
+            <a href="{{ url_for('get_favorites') }}" class="sidebar__nav-list-link" title="Избранное">
                 <i class="fas fa-star sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Избранное</span>
             </a>
         </li>
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'job_search' %}active{% endif %}">
-            <a href="{{ url_for('search') }}" class="sidebar__nav-list-link" title="Поиск">
+            <a href="{{ url_for('get_search') }}" class="sidebar__nav-list-link" title="Поиск">
                 <i class="fas fa-search sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Поиск</span>
             </a>
@@ -65,23 +64,21 @@
         </li>
         
         <li class="sidebar__nav-list-item {% if request.endpoint == 'responses' %}active{% endif %}">
-            <a href="{{ url_for('responses') }}" class="sidebar__nav-list-link" title="История откликов">
+            <a href="{{ url_for('get_responses') }}" class="sidebar__nav-list-link" title="История откликов">
                 <i class="fas fa-paper-plane sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">История откликов</span>
             </a>
         </li>
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'templates' %}active{% endif %}">
-            <a href="{{ url_for('templates') }}" class="sidebar__nav-list-link">
+            <a href="{{ url_for('get_templates') }}" class="sidebar__nav-list-link">
                 <i class="fas fa-file-alt sidebar__nav-list-icon" title="Шаблоны откликов"></i>
                 <span class="sidebar__nav-list-text">Шаблоны откликов</span>
             </a>
         </li>
 
-        <!-- Responses (auto) -->
-
         <li class="sidebar__nav-list-item {% if request.endpoint == 'auto_responses' %}active{% endif %}">
-            <a href="{{ url_for('auto_responses') }}" class="sidebar__nav-list-link" title="Авто-отклики">
+            <a href="{{ url_for('get_auto_responses') }}" class="sidebar__nav-list-link" title="Авто-отклики">
                 <i class="fas fa-robot sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Авто-отклики</span>
             </a>
@@ -94,7 +91,7 @@
         </li>
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'statistics' %}active{% endif %}">
-            <a href="{{ url_for('statistics') }}" class="sidebar__nav-list-link" title="Статистика">
+            <a href="{{ url_for('get_statistics') }}" class="sidebar__nav-list-link" title="Статистика">
                 <i class="fas fa-bar-chart sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Статистика</span>
             </a>
@@ -107,21 +104,21 @@
         </li>
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'sources' %}active{% endif %}">
-            <a href="{{ url_for('sources') }}" class="sidebar__nav-list-link" title="Источники">
+            <a href="{{ url_for('get_sources') }}" class="sidebar__nav-list-link" title="Источники">
                 <i class="fas fa-database sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Источники</span>
             </a>
         </li>
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'parser' %}active{% endif %}">
-            <a href="{{ url_for('parser') }}" class="sidebar__nav-list-link" title="Парсер">
+            <a href="{{ url_for('get_parser') }}" class="sidebar__nav-list-link" title="Парсер">
                 <i class="fas fa-code sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Парсер</span>
             </a>
         </li>
 
         <li class="sidebar__nav-list-item {% if request.endpoint == 'notifications' %}active{% endif %}">
-            <a href="{{ url_for('notifications') }}" class="sidebar__nav-list-link" title="Уведомления">
+            <a href="{{ url_for('get_notifications') }}" class="sidebar__nav-list-link" title="Уведомления">
                 <i class="fas fa-bell sidebar__nav-list-icon"></i>
                 <span class="sidebar__nav-list-text">Уведомления</span>
             </a>
@@ -149,15 +146,15 @@
     <div class="sidebar__footer-actions">
         <!-- Account -->
 
-        <a href="{{ url_for('settings') }}" class="sidebar__footer-action" title="Настройки">
+        <a href="{{ url_for('get_settings') }}" class="sidebar__footer-action" title="Настройки">
             <i class="fas fa-cog"></i>
         </a>
         {% if current_user %}
-            <a href="{{ url_for('logout') }}" class="sidebar__footer-action" title="Выйти">
+            <a href="{{ url_for('get_logout') }}" class="sidebar__footer-action" title="Выйти">
                 <i class="fas fa-sign-out"></i>
             </a>
         {% else %}
-            <a href="{{ url_for('login') }}" class="sidebar__footer-action" title="Войти">
+            <a href="{{ url_for('get_login') }}" class="sidebar__footer-action" title="Войти">
                 <i class="fas fa-sign-in"></i>
             </a>
         {% endif %}

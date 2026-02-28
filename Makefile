@@ -10,7 +10,7 @@ COMPOSE_PROD = docker compose -f docker-compose.yml
 
 GIT_TAG := $(shell git describe --tags --abbrev=0 2>/dev/null || echo "dev")
 GIT_COMMIT_HASH := $(shell git rev-parse --short HEAD)
-GIT_COMMIT_DATE := $(shell git log -1 --format=%cd --date=format:"%Y-%m-%d %H:%M")
+GIT_COMMIT_DATE := $(shell git log -1 --format=%cd --date=format:"%d-%m-%Y %H:%M")
 
 # Commands
 

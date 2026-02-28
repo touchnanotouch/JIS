@@ -5,7 +5,7 @@ from passlib.context import CryptContext
 import secrets
 import logging
 
-from ..config import config
+from ..core import config
 
 
 logger = logging.getLogger(__name__)

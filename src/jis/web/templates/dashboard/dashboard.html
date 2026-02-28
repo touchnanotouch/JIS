@@ -13,8 +13,8 @@
     {% else %}
         <h3>Добро пожаловать в JIS!</h3>
         <p>
-            <a href="{{ url_for('login') }}">Войдите</a> или 
-            <a href="{{ url_for('register') }}">зарегистрируйтесь</a>, 
+            <a href="{{ url_for('get_login') }}">Войдите</a> или 
+            <a href="{{ url_for('get_register') }}">зарегистрируйтесь</a>, 
             чтобы сохранять вакансии и отслеживать отклики
         </p>
     {% endif %}

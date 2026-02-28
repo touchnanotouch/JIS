@@ -16,7 +16,7 @@
             <p class="login-card__subtitle">Войдите, чтобы продолжить</p>
         </div>
         
-        <form method="POST" action="{{ url_for('login') }}" class="login-form">
+        <form method="POST" action="{{ url_for('post_login') }}" class="login-form">
             {% if error %}
             <div class="alert alert--danger">
                 <i class="fas fa-exclamation-circle"></i>
@@ -58,7 +58,7 @@
             </button>
             
             <div class="login-links">
-                <a href="{{ url_for('register') }}" class="login-link">
+                <a href="{{ url_for('get_register') }}" class="login-link">
                     <i class="fas fa-user-plus"></i>
                     Создать аккаунт
                 </a>

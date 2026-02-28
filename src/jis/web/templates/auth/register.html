@@ -12,7 +12,7 @@
             <p>Создайте новый аккаунт</p>
         </div>
         
-        <form method="POST" action="{{ url_for('register') }}" class="auth-form">
+        <form method="POST" action="{{ url_for('post_register') }}" class="auth-form">
             {% if error %}
             <div class="alert alert-danger">
                 <i class="fas fa-exclamation-circle"></i> {{ error }}
@@ -58,7 +58,7 @@
             </button>
             
             <div class="auth-links">
-                <a href="{{ url_for('login') }}">Уже есть аккаунт? Войти</a>
+                <a href="{{ url_for('get_login') }}">Уже есть аккаунт? Войти</a>
             </div>
         </form>
     </div>

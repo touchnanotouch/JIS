@@ -1,7 +1,7 @@
 [project]
 name = "JIS"
 version = "0.1.0"
-description = "JIS - Job Search Aggregator"
+description = "JIS - Job Intelligence System"
 
 dependencies = [
     "fastapi>=0.121.0",
@@ -9,12 +9,13 @@ dependencies = [
     "Jinja2>=3.1.0",
     "sqlalchemy>=2.0.0",
     "redis>=7.1.0",
-    "pydantic>=2.12.0",
+    "pydantic[email]>=2.12.0",
+    "python-multipart>=0.0.22",
     "pydantic-settings>=2.12.0",
     "structlog>=25.5.0",
     "httpx>=0.28.0",
     "python-jose>=3.5.0",
-    "passlib>=1.7.0",
+    "passlib[argon2]>=1.7.0",
     "psycopg2-binary",
     "uvicorn",
     "numpy",

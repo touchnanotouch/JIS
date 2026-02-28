@@ -34,7 +34,7 @@ class UserCreate(UserBase):
     password: str = Field(
         min_length=8, 
         max_length=80,
-        description="Пароль (8-80 символов, должен содержать буквы, цифры и спецсимволы)"
+        description="Пароль (8-80 символов, должен содержать буквы и цифры)"
     )
 
     password_confirm: str
@@ -44,12 +44,10 @@ class UserCreate(UserBase):
     def validate_password_strength(cls, v: str) -> str:
         has_letter = bool(re.search(r"[a-z]", v))
         has_digit = bool(re.search(r"\d", v))
-        has_special = bool(re.search(r"[!@#$%^&*(),.?':{}|<>]", v))
 
-        if not (has_letter and has_digit and has_special):
+        if not (has_letter and has_digit):
             raise ValueError(
-                "Пароль должен содержать хотя бы одну букву, одну цифру "
-                "и один специальный символ"
+                "Пароль должен содержать хотя бы одну букву и одну цифру"
             )
 
         return v

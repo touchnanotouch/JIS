@@ -37,9 +37,9 @@ def authenticate_user(db: Session, email_or_username: str, password: str) -> Opt
 def create_user(db: Session, user_data: UserCreate) -> User:
     hashed_password = hash_password(user_data.password)
     db_user = User(
-        email=user_data.email,
-        username=user_data.username,
-        hashed_password=hashed_password
+        u_email=user_data.email,
+        u_username=user_data.username,
+        u_hashed_password=hashed_password
     )
     db.add(db_user)
     db.commit()
@@ -72,11 +72,11 @@ def create_session(db: Session, user_id: uuid.UUID, user_agent: Optional[str] = 
         expires_at = datetime.now(timezone.utc) + timedelta(hours=12)  # 12 часов
     
     db_session = UserSession(
-        user_id=user_id,
-        session_token=session_token,
-        user_agent=user_agent,
-        ip_address=ip_address,
-        expires_at=expires_at
+        s_user_id=user_id,
+        s_session_token=session_token,
+        s_user_agent=user_agent,
+        s_ip_address=ip_address,
+        s_expires_at=expires_at
     )
     db.add(db_session)
     db.commit()
@@ -85,8 +85,8 @@ def create_session(db: Session, user_id: uuid.UUID, user_agent: Optional[str] = 
 
 def get_session_by_token(db: Session, token: str) -> Optional[UserSession]:
     return db.query(UserSession).filter(
-        UserSession.session_token == token,
-        UserSession.expires_at > datetime.now(timezone.utc)
+        UserSession.s_session_token == token,
+        UserSession.s_expires_at > datetime.now(timezone.utc)
     ).first()
 
 def delete_session(db: Session, session: UserSession):
@@ -94,5 +94,5 @@ def delete_session(db: Session, session: UserSession):
     db.commit()
 
 def delete_all_user_sessions(db: Session, user_id: uuid.UUID):
-    db.query(UserSession).filter(UserSession.user_id == user_id).delete()
+    db.query(UserSession).filter(UserSession.s_user_id == user_id).delete()
     db.commit()

@@ -1,3 +1,7 @@
+# config.py
+# TODO: done
+
+
 import os
 
 from pathlib import Path
@@ -6,7 +10,6 @@ from dotenv import load_dotenv
 
 
 load_dotenv()
-
 
 class Config(BaseSettings):
     # Project settings
@@ -36,7 +39,9 @@ class Config(BaseSettings):
 
     # Celery
 
-    CELERY_BROKER_URL: str = os.getenv("CELERY_BROKER_URL", "redis://localhost:6379/1")
+    CELERY_BROKER_URL: str = os.getenv(
+        "CELERY_BROKER_URL", "redis://localhost:6379/1"
+    )
     CELERY_RESULT_BACKEND: str = os.getenv(
         "CELERY_RESULT_BACKEND", "redis://localhost:6379/2"
     )
@@ -52,7 +57,9 @@ class Config(BaseSettings):
 
     # Parsers settings
 
-    SCRAPING_ENABLED: bool = os.getenv("SCRAPING_ENABLED", "True").lower() == "true"
+    SCRAPING_ENABLED: bool = os.getenv(
+        "SCRAPING_ENABLED", "True"
+    ).lower() == "true"
     SCRAPING_DELAY_MIN: float = float(os.getenv("SCRAPING_DELAY_MIN", "1.0"))
     SCRAPING_DELAY_MAX: float = float(os.getenv("SCRAPING_DELAY_MAX", "3.0"))
 
@@ -79,8 +86,12 @@ class Config(BaseSettings):
 
     # Consts (limits)
 
-    MAX_VACANCIES_PER_SEARCH: int = int(os.getenv("MAX_VACANCIES_PER_SEARCH", "100"))
-    MAX_APPLICATIONS_PER_DAY: int = int(os.getenv("MAX_APPLICATIONS_PER_DAY", "50"))
+    MAX_VACANCIES_PER_SEARCH: int = int(
+        os.getenv("MAX_VACANCIES_PER_SEARCH", "100")
+    )
+    MAX_APPLICATIONS_PER_DAY: int = int(
+        os.getenv("MAX_APPLICATIONS_PER_DAY", "50")
+    )
 
     # Project info
 
